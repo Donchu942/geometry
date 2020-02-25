@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int main() {
   float x, y, r, s, d;
   printf("Введите координаты центра окружности!\n");

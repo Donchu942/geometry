@@ -1,15 +1,29 @@
 #include <stdio.h>
 
-int main() {
-  float x, y, r, s, d;
-  printf("Введите координаты центра окружности!\n");
-  scanf("%f %f", &x, &y);
-  printf("Введите радиус окружности\n");
-  scanf("%f", &r);
-  s = 3.14 * (r * r);
-  d = 3.14 * 2 * r;
-  printf("Площадь равна %f\n", s);
-  printf("Длина равна %f\n", d);
-  return 0;
-}
+int main()
+{
+    FILE* file;
+    struct figure {
+        char name[10];
+        int p[3];
+    };
+    struct figure circle[10];
+    int i = 0;
+    file = fopen("figures.txt", "r");
 
+    while (fscanf(file,
+                  "%s (%d %d, %d)",
+                  circle[i].name,
+                  &circle[i].p[0],
+                  &circle[i].p[1],
+                  &circle[i].p[2])
+           != EOF) {
+        printf("%s (%d %d, %d)\n",
+               circle[i].name,
+               circle[i].p[0],
+               circle[i].p[1],
+               circle[i].p[2]);
+        i++;
+    }
+    return 0;
+}
